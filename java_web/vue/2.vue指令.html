@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <a v-bind:href="url" target="_blank">111</a>
+    <a :href="url" target="_blank">链接</a>
+    <input type="text" v-model='url'>
+
+    <input type="button" value="按钮" v-on:click="handle()">
+    <input type="button" value="按钮" @click="handle()">
+
+
+    <input type="text" v-model='age'>
+    <!-- 按条件渲染 -->
+    <span v-if="age <= 35">年轻人</span>
+    <span v-else-if="age > 25 && age < 60">青少年</span>
+    <span v-else>老年人</span>
+
+    <!-- 按条件展示 其他的display:none -->
+    <span v-show="age<=35"></span>
+    <!-- <span v-show="a = true ? age =  : a = false">幸福老人</span> -->
+
+
+    <div v-for="addr in addrs">{{addr}}</div>
+    <div v-for="(addr,index) in addrs">{{index+1}}:{{addr}}</div>
+
+
+  </div>
+
+</body>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      url: "https://kis2.cn",
+      age: 1,
+      addrs: ['山西', '陕西', '山东']
+    },
+    methods: {
+      handle() {
+        alert('点了一下')
+      }
+    }
+  })
+</script>
+
+</html>
